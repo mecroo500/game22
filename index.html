@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> ÿ»Ìﬁ ÊÌ» »”Ìÿ</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #ffcc00, #000000);
+      animation: backgroundAnimation 5s infinite alternate;
+    }
+    @keyframes backgroundAnimation {
+      0% { background: linear-gradient(45deg, #ffcc00, #000000); }
+      100% { background: linear-gradient(45deg, #000000, #ffcc00); }
+    }
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+      animation: fadeInOut 5s ease-in-out;
+    }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">W</div>
+  <!--  ÷„Ì‰ „·› «·≈⁄œ«œ«  -->
+  <script src="config.js"></script>
+  <script>
+    //  ”ÃÌ· «· Service Worker ≈–« ﬂ«‰ „œ⁄Ê„«
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').then(() => {
+        console.log('Service Worker Registered');
+      });
+    }
+    // ≈⁄«œ… «· ÊÃÌÂ »⁄œ «·„Â·… «·„Õœœ… ›Ì «·≈⁄œ«œ« 
+    setTimeout(() => {
+      window.location.href = config.redirectUrl;
+    }, config.redirectDelay);
+  </script>
+</body>
+</html>
